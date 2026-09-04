@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Krishna Janmashtami | Special Dedication to Krishna</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;500;600;700;800&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Confetti library for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-gold: #fbbf24;
+            --secondary-gold: #f59e0b;
+            --accent-amber: #d97706;
+            --deep-peacock: #0c1427;
+            --peacock-blue: #1e293b;
+            --divine-blue: #1e3a8a;
+            --krishna-blue: #38bdf8;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --border-gold: rgba(251, 191, 36, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0c1222 50%, #030712 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Particle Canvas */
+        #petalCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Top Audio Player Bar */
+        .audio-control-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(14px);
+            border-radius: 50px;
+            border: 1px solid var(--border-gold);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .audio-btn {
+            background: linear-gradient(135deg, var(--secondary-gold), var(--accent-amber));
+            border: none;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Special Friend Dedication Header Banner */
+        .friend-dedication-banner {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, rgba(120, 53, 15, 0.4) 100%);
+            border: 2px solid var(--primary-gold);
+            border-radius: 24px;
+            padding: 24px 30px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 0 35px rgba(251, 191, 36, 0.2);
+            animation: glowBorder 3s infinite alternate;
+        }
+
+        @keyframes glowBorder {
+            0% { border-color: rgba(251, 191, 36, 0.4); box-shadow: 0 0 20px rgba(251, 191, 36, 0.2); }
+            100% { border-color: rgba(251, 191, 36, 0.9); box-shadow: 0 0 35px rgba(245, 158, 11, 0.45); }
+        }
+
+        .friend-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .friend-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f59e0b, #38bdf8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #0f172a;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+        }
+
+        .friend-tag {
+            font-size: 0.85rem;
+            color: #38bdf8;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .friend-name-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fde68a;
+        }
+
+        .btn-surprise {
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+            animation: pulseSurprise 2s infinite;
+        }
+
+        @keyframes pulseSurprise {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        .btn-surprise:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 20px 10px 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid var(--primary-gold);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: var(--primary-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: clamp(2.3rem, 6vw, 4.4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 15%, #fde68a 50%, #f59e0b 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hindi-sub {
+            font-family: 'Rozha One', 'Yatra One', serif;
+            font-size: clamp(1.4rem, 3.5vw, 2.3rem);
+            color: #38bdf8;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            margin-bottom: 18px;
+        }
+
+        .hero-desc {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Mor Pankh & Flute Graphic */
+        .divine-art {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.6));
+            animation: floatUpDown 4s ease-in-out infinite;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        /* Glass Cards Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251, 191, 36, 0.8);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 46px;
+            height: 46px;
+            background: rgba(245, 158, 11, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            border: 1px solid var(--border-gold);
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fde68a;
+        }
+
+        /* Friendship Special Card */
+        .friendship-card {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 2px solid #38bdf8;
+            border-radius: 24px;
+            padding: 32px;
+            margin: 35px 0;
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.15);
+            position: relative;
+        }
+
+        .friendship-quote-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+
+        .friendship-message {
+            font-size: 1.15rem;
+            color: #f1f5f9;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .friendship-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .from-tag {
+            font-weight: 700;
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Diya Lighting */
+        .diya-container {
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .diya-svg {
+            width: 110px;
+            height: 110px;
+            transition: transform 0.3s;
+        }
+
+        .flame {
+            transform-origin: center bottom;
+            animation: flicker 1.8s ease-in-out infinite alternate;
+            display: none;
+        }
+
+        .diya-lit .flame {
+            display: block;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-1deg); filter: drop-shadow(0 0 12px #f59e0b); }
+            50% { transform: scale(1.1) rotate(2deg); filter: drop-shadow(0 0 25px #fbbf24); }
+            100% { transform: scale(0.95) rotate(-2deg); filter: drop-shadow(0 0 18px #d97706); }
+        }
+
+        .diya-status {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-gold);
+        }
+
+        /* Quotes Section */
+        .quote-box {
+            background: rgba(15, 23, 42, 0.85);
+            border-left: 4px solid var(--secondary-gold);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .sanskrit-verse {
+            font-family: 'Yatra One', cursive;
+            font-size: 1.15rem;
+            color: #38bdf8;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .quote-meaning {
+            font-size: 0.98rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--primary-gold);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .btn-action {
+            width: 100%;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-action:hover {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Japa Counter */
+        .japa-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-gold);
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(245, 158, 11, 0.08);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .japa-circle:active {
+            transform: scale(0.92);
+            background: rgba(245, 158, 11, 0.2);
+        }
+
+        .japa-count {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+        }
+
+        .japa-label {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Modal for Special Surprise */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            border: 2px solid var(--primary-gold);
+            border-radius: 28px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(245, 158, 11, 0.3);
+            animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* WhatsApp Share Buttons */
+        .share-btn {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            border: none;
+            padding: 15px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 10px 20px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(251, 191, 36, 0.2);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Falling Petals & Glow Canvas -->
+    <canvas id="petalCanvas"></canvas>
+
+    <div class="container">
+        <!-- Top Navigation / Ambient Flute Bar -->
+        <div class="audio-control-bar">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-om" style="color: var(--primary-gold); font-size: 1.4rem;"></i>
+                <span style="font-weight: 600; font-size: 0.95rem; color: #e2e8f0;">Divine Experience</span>
+            </div>
+            <button class="audio-btn" id="fluteToggleBtn" onclick="toggleDivineFlute()">
+                <i class="fa-solid fa-music"></i>
+                <span id="fluteBtnText">Play Divine Flute</span>
+            </button>
+        </div>
+
+        <!-- 🌟 SPECIAL FRIEND DEDICATION BANNER FOR KRISHNA 🌟 -->
+        <div class="friend-dedication-banner">
+            <div class="friend-info">
+                <div class="friend-avatar">🦚</div>
+                <div>
+                    <div class="friend-tag">Special Dedication for My Best Friend</div>
+                    <div class="friend-name-title">Krishna Bhai, Janmashtami Mubaarak! ✨</div>
+                </div>
+            </div>
+            <button class="btn-surprise" onclick="openSurpriseModal()">
+                <i class="fa-solid fa-gift"></i> Open Krishna's Special Surprise
+            </button>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="badge">🌸 Jai Shri Krishna 🌸</div>
+            
+            <!-- SVG Mor Pankh & Flute Graphic -->
+            <svg class="divine-art" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Flute (Bansuri) -->
+                <rect x="25" y="115" width="150" height="12" rx="6" transform="rotate(-25 25 115)" fill="url(#fluteGrad)" />
+                <circle cx="65" cy="98" r="3" fill="#0f172a" />
+                <circle cx="85" cy="88" r="3" fill="#0f172a" />
+                <circle cx="105" cy="78" r="3" fill="#0f172a" />
+                <circle cx="125" cy="68" r="3" fill="#0f172a" />
+                <!-- Peacock Feather (Mor Pankh) -->
+                <path d="M100 20 C130 20 160 50 150 90 C140 130 100 170 100 170 C100 170 60 130 50 90 C40 50 70 20 100 20 Z" fill="url(#pankhGrad)" opacity="0.9"/>
+                <circle cx="100" cy="75" r="24" fill="#0284c7" />
+                <circle cx="100" cy="75" r="16" fill="#0f172a" />
+                <circle cx="100" cy="75" r="9" fill="#38bdf8" />
+                <!-- Gradients -->
+                <defs>
+                    <linearGradient id="fluteGrad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#f59e0b"/>
+                        <stop offset="50%" stop-color="#fde68a"/>
+                        <stop offset="100%" stop-color="#d97706"/>
+                    </linearGradient>
+                    <linearGradient id="pankhGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#15803d"/>
+                        <stop offset="40%" stop-color="#0284c7"/>
+                        <stop offset="80%" stop-color="#1e1b4b"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <h1 class="main-title">Happy Krishna Janmashtami</h1>
+            <div class="hindi-sub">श्री कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएं</div>
+            <p class="hero-desc">
+                Bhai <strong>Krishna</strong>, aapka naam hi bhagwan Shri Krishna par hai! May your life be filled with supreme wisdom, joyful laughter, unbreakable health, and royal success.
+            </p>
+        </section>
+
+        <!-- 🤝 SPECIAL BROTHERHOOD / FRIENDSHIP MESSAGE CARD 🤝 -->
+        <div class="friendship-card">
+            <div class="friendship-quote-badge">🦚 Krishna - Sudama Friendship Bond 🦚</div>
+            <div class="friendship-message">
+                "Dosti me Sudama sa niswarth prem, aur zindagi ke har maidan me Arjun sa saarthi!<br>
+                Bhai <strong>Krishna</strong>, tera toh naam hi itna pavitra aur powerful hai ki har din tere liye Janmashtami jaisa shubh ho. Hamesha haste muskuraate raho aur aage badhte raho!"
+            </div>
+            <div class="friendship-footer">
+                <div class="from-tag">❤️ Dil se wishing you — Ranjeet</div>
+                <button class="audio-btn" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8;" onclick="shareWithKrishnaDirect()">
+                    <i class="fa-brands fa-whatsapp"></i> Send Direct Wish to Krishna
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content 2-Column Grid -->
+        <div class="grid-2">
+            
+            <!-- Card 1: Interactive Diya Ceremony -->
+            <div class="glass-card diya-container" onclick="lightTheDiya()">
+                <div class="card-header" style="justify-content: center;">
+                    <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+                    <div class="card-title">Light The Akhand Diya</div>
+                </div>
+                
+                <svg class="diya-svg" id="diyaGraphic" viewBox="0 0 100 100">
+                    <!-- Flame -->
+                    <path class="flame" d="M50 15 C55 30 65 42 50 55 C35 42 45 30 50 15 Z" fill="url(#flameGrad)" />
+                    <!-- Diya Base -->
+                    <ellipse cx="50" cy="62" rx="35" ry="12" fill="#d97706" />
+                    <path d="M15 62 Q50 92 85 62 Z" fill="#92400e" />
+                    <ellipse cx="50" cy="60" rx="30" ry="8" fill="#f59e0b" />
+                    <defs>
+                        <linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="30%" stop-color="#fbbf24"/>
+                            <stop offset="80%" stop-color="#ef4444"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                
+                <div class="diya-status" id="diyaText">👉 Click to Light the Diya for Krishna</div>
+            </div>
+
+            <!-- Card 2: 108 Mahamantra Japa Counter -->
+            <div class="glass-card" style="text-align: center;">
+                <div class="card-header" style="justify-content: center;">
+                    <div class="card-icon"><i class="fa-solid fa-hands-praying"></i></div>
+                    <div class="card-title">Mahamantra Chanting (108)</div>
+                </div>
+                <div style="font-size: 0.95rem; color: #38bdf8; margin-bottom: 10px; font-weight: 600;">
+                    हरे कृष्ण हरे कृष्ण, कृष्ण कृष्ण हरे हरे ।<br>हरे राम हरे राम, राम राम हरे हरे ॥
+                </div>
+
+                <div class="japa-circle" onclick="incrementJapa()">
+                    <div class="japa-count" id="japaCounter">0</div>
+                    <div class="japa-label">Chants / 108</div>
+                </div>
+
+                <button class="btn-action" style="background: rgba(255,255,255,0.1); border: 1px solid var(--border-gold);" onclick="resetJapa(event)">
+                    <i class="fa-solid fa-rotate-right"></i> Reset Counter
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Section 2: Divine Quotes for Krishna & Life Wisdom -->
+        <div class="glass-card" style="margin-bottom: 35px;">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-scroll"></i></div>
+                <div>
+                    <div class="card-title">Lord Krishna's Timeless Quotes & Updesh</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8;">Divine wisdom on Karma, Focus, Success, and Friendship</div>
+                </div>
+            </div>
+
+            <!-- Dynamic Quote Box -->
+            <div class="quote-box" id="quoteContainer">
+                <div class="sanskrit-verse" id="verseText">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</div>
+                <div class="quote-meaning" id="meaningText">
+                    "Perform your duty with 100% passion, focus, and mastery. Never let attachment to results weaken your present strength."
+                </div>
+                <div class="quote-author" id="chapterText">— Bhagavad Gita (Chapter 2, Verse 47) • Mind Mastery</div>
+            </div>
+
+            <button class="btn-action" onclick="generateNewQuote()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Reveal Next Divine Wisdom
+            </button>
+        </div>
+
+        <!-- 1-Click WhatsApp Wish to Krishna -->
+        <div class="glass-card" style="text-align: center;">
+            <div class="card-header" style="justify-content: center;">
+                <div class="card-icon" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="card-title">Send Special Greeting to Krishna on WhatsApp</div>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px;">
+                Click below to send a customized, heartwarming Janmashtami wish crafted specifically for Krishna!
+            </p>
+            <button class="share-btn" onclick="shareWithKrishnaDirect()">
+                <i class="fa-brands fa-whatsapp"></i> Share Special Wish with Krishna
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div>✨ "Whenever righteousness declines, I manifest Myself to protect the good." ✨</div>
+            <div style="color: #fde68a; font-weight: 600; margin-top: 6px;">Dedicated to Krishna Bhai with Love & Respect from Ranjeet 🦚</div>
+        </footer>
+    </div>
+
+    <!-- 🎁 SPECIAL POPUP SURPRISE MODAL FOR KRISHNA 🎁 -->
+    <div class="modal-overlay" id="surpriseModal" onclick="closeSurpriseModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal-btn" onclick="closeSurpriseModal(event)">&times;</button>
+            
+            <div style="font-size: 3.5rem; margin-bottom: 10px;">🦚✨🎉</div>
+            <h2 style="font-family: 'Cinzel Decorative', cursive; font-size: 1.8rem; color: #fde68a; margin-bottom: 15px;">
+                Happy Birthday, Krishna!
+            </h2>
+            <div style="font-size: 1.1rem; color: #38bdf8; font-weight: 700; margin-bottom: 15px;">
+                (Aaj ka din toh sach me tera hi hai, Krishna bhai!)
+            </div>
+            
+            <p style="color: #e2e8f0; line-height: 1.7; font-size: 1rem; margin-bottom: 25px; text-align: left; background: rgba(0,0,0,0.3); padding: 18px; border-radius: 16px; border-left: 4px solid #f59e0b;">
+                "Bhai <strong>Krishna</strong>, bhagwan Shri Krishna ka aashirwad hamesha tere upar bana rahe. Teri har ek problem solve ho, tera career aur life top peak par jaye, aur hamari dosti hamesha aisi hi mazboot bani rahe.<br><br>
+                Happy Krishna Janmashtami mere bhai! ❤️"
+            </p>
+
+            <div style="font-weight: 700; color: var(--primary-gold); margin-bottom: 20px;">
+                — Tera Bhai, Ranjeet 🤝
+            </div>
+
+            <button class="share-btn" onclick="shareWithKrishnaDirect()">
+                <i class="fa-brands fa-whatsapp"></i> Forward this Letter to Krishna
+            </button>
+        </div>
+    </div>
+
+    <!-- Script: Interactive Animations & Sound Synthesizer -->
+    <script>
+        // 1. Floating Flower Petals Canvas
+        const canvas = document.getElementById('petalCanvas');
+        const ctx = canvas.getContext('2d');
+        let petals = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Petal {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = (Math.random() - 0.5) * 1.2;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 0.5) * 2;
+                this.color = Math.random() > 0.5 ? '#fbbf24' : '#f43f5e';
+                this.opacity = Math.random() * 0.6 + 0.3;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.01) + this.speedX;
+                this.rotation += this.rotSpeed;
+                if (this.y > canvas.height + 20) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 35; i++) {
+            petals.push(new Petal());
+        }
+
+        function animatePetals() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            petals.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animatePetals);
+        }
+        animatePetals();
+
+        // 2. Web Audio API Meditative Flute & Chime Synthesizer
+        let audioCtx = null;
+        let isPlaying = false;
+        let fluteInterval = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playFluteNote(freq, duration = 1.6) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+            gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.18, audioCtx.currentTime + 0.3);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playTempleBell() {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.5);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 2.5);
+        }
+
+        function toggleDivineFlute() {
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const btnText = document.getElementById('fluteBtnText');
+            if (!isPlaying) {
+                isPlaying = true;
+                btnText.textContent = "Pause Divine Flute";
+                playTempleBell();
+
+                const notes = [440, 493.88, 554.37, 659.25, 739.99, 659.25, 554.37, 493.88];
+                let idx = 0;
+                fluteInterval = setInterval(() => {
+                    playFluteNote(notes[idx % notes.length], 1.5);
+                    idx++;
+                }, 1400);
+            } else {
+                isPlaying = false;
+                btnText.textContent = "Play Divine Flute";
+                clearInterval(fluteInterval);
+            }
+        }
+
+        // 3. Interactive Diya Lighting
+        let isLit = false;
+        function lightTheDiya() {
+            initAudio();
+            const diyaCard = document.querySelector('.diya-container');
+            const diyaText = document.getElementById('diyaText');
+            
+            if (!isLit) {
+                isLit = true;
+                diyaCard.classList.add('diya-lit');
+                diyaText.innerHTML = "✨ Akhand Diya is Lit for Krishna! Infinite blessings on you! ✨";
+                playTempleBell();
+                triggerConfetti();
+            } else {
+                isLit = false;
+                diyaCard.classList.remove('diya-lit');
+                diyaText.innerHTML = "👉 Click to Light the Diya for Krishna";
+            }
+        }
+
+        // 4. Japa Counter (108)
+        let count = 0;
+        function incrementJapa() {
+            initAudio();
+            count++;
+            document.getElementById('japaCounter').textContent = count;
+            playFluteNote(523.25 + (count % 8) * 30, 0.2);
+
+            if (count === 108) {
+                playTempleBell();
+                triggerConfetti();
+                alert("🎉 108 Chants Completed! Lord Krishna's eternal grace is always with you!");
+            }
+        }
+
+        function resetJapa(e) {
+            e.stopPropagation();
+            count = 0;
+            document.getElementById('japaCounter').textContent = count;
+        }
+
+        // 5. Special Surprise Modal
+        function openSurpriseModal() {
+            initAudio();
+            document.getElementById('surpriseModal').style.display = 'flex';
+            playTempleBell();
+            triggerConfetti();
+        }
+
+        function closeSurpriseModal(e) {
+            document.getElementById('surpriseModal').style.display = 'none';
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        // 6. Curated Quotes
+        const quotes = [
+            {
+                verse: "सखेति मत्वा प्रसभं यदुक्तं हे कृष्ण हे यादव हे सखेति।",
+                meaning: "Krishna is not just God, He is the ultimate friend who stays by your side through every storm of life.",
+                chapter: "— Bhagavad Gita • Divine Friendship & Loyalty"
+            },
+            {
+                verse: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
+                meaning: "Give your 100% focused energy and heart to your craft and duty. Leave the results to the divine.",
+                chapter: "— Bhagavad Gita (Chapter 2, Verse 47) • Mind Mastery"
+            },
+            {
+                verse: "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय। सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥",
+                meaning: "Perform all actions with a steady, peaceful heart, unaffected by temporary wins or losses.",
+                chapter: "— Bhagavad Gita (Chapter 2, Verse 48) • Inner Calm"
+            },
+            {
+                verse: "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्। आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥",
+                meaning: "Believe in your strength and rise through your own focused mindset. You have unlimited potential.",
+                chapter: "— Bhagavad Gita (Chapter 6, Verse 5) • Self-Belief"
+            }
+        ];
+
+        let currentQuoteIdx = 0;
+        function generateNewQuote() {
+            currentQuoteIdx = (currentQuoteIdx + 1) % quotes.length;
+            const q = quotes[currentQuoteIdx];
+            
+            const verseElem = document.getElementById('verseText');
+            const meaningElem = document.getElementById('meaningText');
+            const chapterElem = document.getElementById('chapterText');
+
+            verseElem.style.opacity = '0';
+            meaningElem.style.opacity = '0';
+
+            setTimeout(() => {
+                verseElem.textContent = q.verse;
+                meaningElem.textContent = `"${q.meaning}"`;
+                chapterElem.textContent = q.chapter;
+                verseElem.style.opacity = '1';
+                meaningElem.style.opacity = '1';
+            }, 200);
+        }
+
+        // 7. Special Direct WhatsApp Wish for Krishna
+        function shareWithKrishnaDirect() {
+            const msg = `🦚 *Happy Krishna Janmashtami, Mere Bhai Krishna!* 🦚\n\n✨ _"Bhai tera toh naam hi Krishna hai, aaj ka din toh sach me tera hi hai!"_ ✨\n\n🤝 *Dosti me Sudama sa prem aur ladai me Arjun sa saarthi!*\nBhagwan Shri Krishna ka aashirwad hamesha tere sath rahe, teri har khwaish poori ho aur tu hamesha khush rahe!\n\n❤️ *Dil se Happy Janmashtami from Tera Bhai Ranjeet* 🌸\n\n_Check out this special website I made for you:_ 🎁`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
